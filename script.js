@@ -2,7 +2,7 @@
 // Em poucas palavras, podemos olhar para o código assíncrono como um código que inicia uma tarefa agora e a termina mais tarde. Vamos elaborar sobre isso à medida que avançamos no artigo, mas antes disso, vamos aprender sobre código síncrono — a contraparte do código assíncrono.
 // JavaScript, por natureza, é uma linguagem síncrona. E isso significa que JavaScript pode executar apenas um código por vez — de cima para baixo.
 
-//  Considere o código abaixo:
+//   Considere o código abaixo:
 
 console.log("logging line 1");
 
@@ -38,6 +38,24 @@ const promessa = new Promise(function (resolve, reject) {
   }
 });
 
+promessa.then((resolucao) => {
+  console.log(resolucao);
+});
+
+// Assíncrono
+// As promises não fazem sentido quando o código executado dentro da mesma é apenas código sincrono.
+// O poder está na execução de código assincrono que executara o resolve() ao final dele.
+const promessa = new Promise((resolve, reject) => {
+  let condicao = true;
+  if (condicao) {
+    setTimeout(() => {
+      resolve("Resolvida");
+    }, 9000);
+  } else {
+    reject("Erro");
+  }
+});
+console.log("careca");
 promessa.then((resolucao) => {
   console.log(resolucao);
 });
