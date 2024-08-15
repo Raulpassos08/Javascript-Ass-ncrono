@@ -4,58 +4,87 @@
 
 //   Considere o código abaixo:
 
-console.log("logging line 1");
+// console.log("logging line 1");
 
-console.log("logging line 2");
+// console.log("logging line 2");
 
-console.log("logging line 3");
+// console.log("logging line 3");
 
 // Por padrão, o JavaScript executa o código acima de forma síncrona. E isso significa linha por linha. Então a linha 1 não pode ser executada antes da linha 2, e a linha dois não pode ser executada antes da linha 3.
 
 //  new Promise()
 // Promise é uma função construtora de promessas. Existem dois resultados possiveis de uma promessa,
 // ela pode ser resolvida, com a execução do primeiro argumento, ou rejeitada e o segundo argumento for ativado.
-const promessa = new Promise(function (resolve, reject) {
-  let condicao = true;
-  if (condicao) {
-    resolve();
-  } else {
-    reject();
-  }
-});
+// const promessa = new Promise(function (resolve, reject) {
+//   let condicao = true;
+//   if (condicao) {
+//     resolve();
+//   } else {
+//     reject();
+//   }
+// });
 
-console.log(promessa);
+// console.log(promessa);
 
 // then()
 // O poder das Promisses está no metodo then() do seu protótipo. O Callback deste método só será
 // ativado quando a promise for resolvida. O argumento do callback será o valor passsado na função resolve.
-const promessa = new Promise(function (resolve, reject) {
-  let condicao = true;
-  if (condicao) {
-    resolve("Deu certo, misera");
-  } else {
-    reject("ERRO");
-  }
-});
+// const promessa = new Promise(function (resolve, reject) {
+//   let condicao = true;
+//   if (condicao) {
+//     resolve("Deu certo, misera");
+//   } else {
+//     reject("ERRO");
+//   }
+// });
 
-promessa.then((resolucao) => {
-  console.log(resolucao);
-});
+// promessa.then((resolucao) => {
+//   console.log(resolucao);
+// });
 
 // Assíncrono
 // As promises não fazem sentido quando o código executado dentro da mesma é apenas código sincrono.
 // O poder está na execução de código assincrono que executara o resolve() ao final dele.
+// const promessa = new Promise((resolve, reject) => {
+//   let condicao = true;
+//   if (condicao) {
+//     setTimeout(() => {
+//       resolve("Resolvida");
+//     }, 9000);
+//   } else {
+//     reject("Erro");
+//   }
+// });
+// console.log("careca");
+// promessa.then((resolucao) => {
+//   console.log(resolucao);
+// });
+
+// then().then()
+// O metodo then() retorna outra Promise. Podemos colocar then() após then()
+// e fazer um encadeamento de promessas. O valor do primeiro argumento de cada then,
+// será o valor do retorno anterior.
+// const promessa = new Promise((resolve, reject) => {
+//   resolve('Etapa 1')
+// })
+// promessa.then(resolucao => {
+//   console.log(resolucao)
+//   return 'Etapa 2'
+// }).then(resolucao => {
+//   console.log(resolucao);
+//   return "Etapa 3";
+// }).then(r => r +4)
+// .then(r => {
+//   console.log(r)
+// })
+
+// catch()
+// O método catch(), do prototopo de Promises, adiciona um callback a promise que será ativado caso a mesma seja rejeitada.
 const promessa = new Promise((resolve, reject) => {
-  let condicao = true;
+  let condicao = false;
   if (condicao) {
-    setTimeout(() => {
-      resolve("Resolvida");
-    }, 9000);
+    resolve("Estou pronto!");
   } else {
     reject("Erro");
   }
-});
-console.log("careca");
-promessa.then((resolucao) => {
-  console.log(resolucao);
 });
