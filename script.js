@@ -2,7 +2,7 @@
 // Em poucas palavras, podemos olhar para o código assíncrono como um código que inicia uma tarefa agora e a termina mais tarde. Vamos elaborar sobre isso à medida que avançamos no artigo, mas antes disso, vamos aprender sobre código síncrono — a contraparte do código assíncrono.
 // JavaScript, por natureza, é uma linguagem síncrona. E isso significa que JavaScript pode executar apenas um código por vez — de cima para baixo.
 
-//   Considere o código abaixo:
+  Considere o código abaixo:
 
 console.log("logging line 1");
 
@@ -141,4 +141,19 @@ promessa
   )
   .finally((teste) => {
     console.log(teste);
+  });
+
+// Fetch API
+// Permite fazermos requisições HTTP através do metodo fetch().
+// Este metodo retorna a resolução de uma Promise. Podemos então utilizar o then para interagirmos com a resposta, que é um objeto do tipo Response
+const doc = fetch("https://viacep.com.br/ws/60530540/json/");
+
+doc
+  .then((resolucao) => {
+    return resolucao.text();
+  })
+  .then((body) => {
+    const conteudo = document.querySelector(".conteudo");
+    conteudo.innerText = body;
+    console.log(body);
   });
