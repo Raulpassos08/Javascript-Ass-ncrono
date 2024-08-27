@@ -26,9 +26,9 @@ const promessa = new Promise(function (resolve, reject) {
 
 console.log(promessa);
 
-// then()
-// O poder das Promisses está no metodo then() do seu protótipo. O Callback deste método só será
-// ativado quando a promise for resolvida. O argumento do callback será o valor passsado na função resolve.
+then()
+O poder das Promisses está no metodo then() do seu protótipo. O Callback deste método só será
+ativado quando a promise for resolvida. O argumento do callback será o valor passsado na função resolve.
 const promessa = new Promise(function (resolve, reject) {
   let condicao = true;
   if (condicao) {
@@ -156,4 +156,16 @@ doc
     const conteudo = document.querySelector(".conteudo");
     conteudo.innerText = body;
     console.log(body);
+  });
+
+// .blob()
+// Um blob é um tipo de objeto utilizado para representação de dados de um arquivo. O blob pode ser utilizado
+// para transformarmos requisições de imagens por exemplo. O blob gera um URL único
+const div = document.createElement("div");
+
+fetch("./imagem.png")
+  .then((response) => response.blob())
+  .then((imgBlob) => {
+    const blobUrl = URL.createObjectURL(imgBlob);
+    console.log(blobUrl);
   });
