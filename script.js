@@ -169,3 +169,32 @@ fetch("./imagem.png")
     const blobUrl = URL.createObjectURL(imgBlob);
     console.log(blobUrl);
   });
+
+
+const cepInput = document.getElementById('cep')
+const btnCep = document.getElementById('btnCep')
+const resultadoCep = document.querySelector('.resultadoCep');
+
+btnCep.addEventListener('click', handleClick)
+
+function handleClick(event){
+  event.preventDefault();
+  const cep = cepInput.value
+  if (cep === "") {
+    alert("Por favor, insira um CEP válido.");
+    return;
+  }
+  buscaCep(cep)
+}
+
+function buscaCep(cep){
+  fetch(`https://viacep.com.br/ws/${cep}/json/`)
+  .then(response => response.text())
+  .then(body => {
+    resultadoCep.innerText = body
+  })
+  .catch(error => {
+    console.error('Erro ao buscar o CEP:', error);
+    resultadoCep.innerText = 'Erro ao buscar o CEP';
+  });
+}
