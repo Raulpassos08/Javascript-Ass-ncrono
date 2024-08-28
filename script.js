@@ -198,3 +198,12 @@ function buscaCep(cep){
     resultadoCep.innerText = 'Erro ao buscar o CEP';
   });
 }
+
+// JSON
+// Javascript Object Notation (JSON) é um formato de organização de dados, compostos por um conjunto de chave e valor. As aspas 
+// duplas são obrigatorias, tanto na chave quanto novalor quando este for uma String.
+{
+  "id": 1,
+  "nome": "Raul",
+  "email": "raulpassos08@gmail.com"
+}
